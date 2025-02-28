@@ -1,0 +1,57 @@
+# Environment files
+.env
+.env.*
+!.env.example
+
+# Shell script logs and temporary files
+*.log
+*.tmp
+*.temp
+*.swp
+*.swo
+*~
+
+# macOS system files
+.DS_Store
+.AppleDouble
+.LSOverride
+Icon
+._*
+
+# IDE and editor files
+.idea/
+.vscode/
+*.sublime-project
+*.sublime-workspace
+
+# Compiled files
+*.com
+*.class
+*.dll
+*.exe
+*.o
+*.so
+
+# Package files
+*.7z
+*.dmg
+*.gz
+*.iso
+*.jar
+*.rar
+*.tar
+*.zip
+
+# Local development files
+local/
+*.local
+test.sh
+
+# Runtime data
+pids
+*.pid
+*.seed
+*.pid.lock
+
+# Logs directory
+logs/
