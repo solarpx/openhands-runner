@@ -16,11 +16,7 @@ To install the OpenHands runner globally, run:
 sudo make install
 ```
 
-This will install the `openhands` command in `/usr/local/bin`. You can customize the installation directory by setting the `PREFIX` variable:
-
-```bash
-sudo make install PREFIX=/opt/local
-```
+This will install the `openhands` command in `/usr/local/sbin`.
 
 ## Uninstallation
 
@@ -53,14 +49,12 @@ WORKSPACE_BASE=/path/to/your/workspace openhands
 
 ## Available LLM Models
 
-- Anthropic:
-  - claude-3-7-sonnet-20250219 (newest)
-  - claude-3-5-sonnet-20240620
-  - claude-3-opus-20240229
-  - claude-3-haiku-20240307
-- OpenAI: 
-  - gpt-4-turbo-preview
-  - gpt-4
-  - gpt-3.5-turbo
-- Azure OpenAI: Requires Azure configuration
-- Local: Available through Ollama configuration
+The default model is `claude-3-7-sonnet-20250219`. You can specify a different model using the `OPENHANDS_LLM_MODEL` environment variable.
+
+Supported providers:
+- Anthropic Claude models
+- OpenAI GPT models
+- Azure OpenAI (requires Azure configuration)
+- Local models (through Ollama configuration)
+
+Check the [OpenHands documentation](https://docs.all-hands.dev) for the most up-to-date list of supported models.
