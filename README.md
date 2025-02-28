@@ -49,7 +49,7 @@ WORKSPACE_BASE=/path/to/your/workspace openhands
 
 ## Available LLM Models
 
-The default model is `claude-3-7-sonnet-20250219`. You can specify a different model using the `OPENHANDS_LLM_MODEL` environment variable.
+The default model is `claude-3-5-sonnet-20241022`. You can specify a different model using the `OPENHANDS_LLM_MODEL` environment variable.
 
 Supported providers:
 - Anthropic Claude models

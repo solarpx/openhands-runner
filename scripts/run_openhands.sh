@@ -108,7 +108,7 @@ fi
 
 # Set default model if not specified
 if [ -z "$OPENHANDS_LLM_MODEL" ]; then
-    OPENHANDS_LLM_MODEL="claude-3-7-sonnet-20250219"
+    OPENHANDS_LLM_MODEL="claude-3-5-sonnet-20241022"
     echo "ℹ️  Using default model: $OPENHANDS_LLM_MODEL"
 fi
 
