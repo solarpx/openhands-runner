@@ -16,7 +16,7 @@ To install the OpenHands runner globally, run:
 sudo make install
 ```
 
-This will install the `openhands` command in `/usr/local/sbin`.
+This will install the `openhands` command in `/usr/local/bin`.
 
 ## Uninstallation
 
@@ -28,23 +28,38 @@ sudo make uninstall
 
 ## Usage
 
-Once installed, you can run OpenHands using the `openhands` command. The following environment variables can be configured:
+Once installed, you can run OpenHands using the `openhands` command in any directory. OpenHands will automatically use your current directory as the workspace.
 
-- `OPENHANDS_LLM_MODEL` - The LLM model to use (defaults to claude-3-7-sonnet-20250219)
-- `OPENHANDS_LLM_API_KEY` - Your API key for the LLM service
-- `OPENHANDS_LLM_BASE_URL` - The base URL for the LLM API
-- `WORKSPACE_BASE` - Path to your local workspace (optional)
+### Configuration
 
-### Example Usage
+It's recommended to set your default environment variables in your shell's configuration file (e.g. `~/.zshrc` or `~/.bashrc`):
 
-Run with GitHub integration (UI mode):
 ```bash
-openhands
+# OpenHands configuration
+export OPENHANDS_LLM_API_KEY="your-api-key"
+export OPENHANDS_LLM_MODEL="claude-3-5-sonnet-20241022"  # optional, this is the default
+export OPENHANDS_LLM_BASE_URL="https://api.anthropic.com/v1"  # optional, for custom endpoints
 ```
 
-Run with local workspace:
+These defaults can be overridden temporarily when needed:
 ```bash
-WORKSPACE_BASE=/path/to/your/workspace openhands
+# Override model for a specific run
+OPENHANDS_LLM_MODEL="gpt-4" openhands
+
+# Use a different API key
+OPENHANDS_LLM_API_KEY="alternate-key" openhands
+```
+
+### Running Multiple Instances
+
+You can run multiple OpenHands instances simultaneously by specifying different ports:
+
+```bash
+# Start first instance (default)
+openhands
+
+# Start second instance on alternate port
+openhands -p 3001
 ```
 
 ## Available LLM Models
