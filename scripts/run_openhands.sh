@@ -125,10 +125,11 @@ if [ -z "$NO_PULL" ]; then
     docker pull docker.all-hands.dev/all-hands-ai/openhands:${OPENHANDS_VERSION}
 fi
 
-# Stop existing container if running
-if docker ps -q --filter "name=openhands-app" | grep -q .; then
-    echo "🛑 Stopping existing OpenHands container..."
-    docker stop openhands-app >/dev/null 2>&1 || true
+# Check if port is already in use
+if lsof -i ":${PORT}" >/dev/null 2>&1; then
+    echo "❌ Port ${PORT} is already in use"
+    echo "💡 Try using a different port with: openhands -p <port>"
+    exit 1
 fi
 
 echo "🚀 Starting OpenHands v${OPENHANDS_VERSION}..."
@@ -154,12 +155,12 @@ docker run -it --rm \
     -v ~/.openhands-state:/.openhands-state \
     -p "${PORT}:3000" \
     --add-host host.docker.internal:host-gateway \
-    --name openhands-app \
+    --name "openhands-app-${PORT}" \
     docker.all-hands.dev/all-hands-ai/openhands:${OPENHANDS_VERSION}
 
 # Handle exit
 cleanup() {
-    echo -e "\n👋 Shutting down OpenHands..."
-    docker stop openhands-app >/dev/null 2>&1 || true
+    echo -e "\n👋 Shutting down OpenHands on port ${PORT}..."
+    docker stop "openhands-app-${PORT}" >/dev/null 2>&1 || true
 }
 trap cleanup EXIT
